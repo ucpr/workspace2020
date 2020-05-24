@@ -5,8 +5,11 @@ on: push
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      image: jlesage/firefox
+      options: -v /home/runner/work/workspace2020/workspace2020:/config:rw
 
     steps:
       - name: test
         run: |
-          pwd
+          ls
