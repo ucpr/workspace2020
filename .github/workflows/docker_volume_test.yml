@@ -1,21 +1,42 @@
 name: docker_volume_test
 
-on: push
+on:
+  issues:
+    types: [opened]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-#    container:
-#      image: zenika/alpine-chrome
-#      options: -v /home/runner/work/workspace2020/workspace2020:/usr/src/app --no-sandbox --screenshot --hide-scrollbars https://www.chromestatus.com/
+
+    container: cypress/browsers:node12.13.0-chrome78-ff70
 
     steps:
-      - name: take a pic
-        uses: docker://zenika/alpine-chrome
-        with:
-          args: -v /github/workspace:/usr/src/app zenika/alpine-chrome --no-sandbox --screenshot=hoge.png --hide-scrollbars https://www.chromestatus.com/
+      - uses: actions/checkout@v1
 
+      - name: tale a pic
+        run: |
+          google-chrome-stable --headless --disable-gpu --no-sandbox --screenshot https://www.chromestatus.com/
+#      - name: take a pic
+#        uses: docker://zenika/alpine-chrome
+#        with:
+#          entrypoint: chromium-browser --headless --disable-gpu --disable-software-rasterizer --disable-dev-shm-usage
+#          args: -v $(pwd):/usr/src/app --no-sandbox --print-to-pdf=hoge.pdf --hide-scrollbars https://www.chromestatus.com/
+#      - name: take a pic
+#        run: |
+#          docker container run -it --rm -v $(pwd):/usr/src/app zenika/alpine-chrome --no-sandbox --screenshot --hide-scrollbars https://www.chromestatus.com/
       - name: test
         run: |
           ls
           pwd
+
+      - uses: actions/github-script@v1
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: "👋 Thanks for reporting!\n ![test image](./screenshot.png)"
+            }) 
+  
