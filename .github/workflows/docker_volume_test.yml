@@ -13,7 +13,7 @@ jobs:
       - name: take a pic
         uses: docker://zenika/alpine-chrome
         with:
-          args: -v $(pwd):/usr/src/app zenika/alpine-chrome --no-sandbox --screenshot --hide-scrollbars https://www.chromestatus.com/
+          args: -v $(pwd):/usr/src/app zenika/alpine-chrome --no-sandbox --screenshot=hoge.png --hide-scrollbars https://www.chromestatus.com/
 
       - name: test
         run: |
