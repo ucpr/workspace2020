@@ -6,10 +6,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: jlesage/firefox
-      options: -v /home/runner/work/workspace2020/workspace2020:/config:rw
+      image: zenika/alpine-chrome
+      options: -v /home/runner/work/workspace2020/workspace2020:/usr/src/app --no-sandbox --screenshot --hide-scrollbars https://www.chromestatus.com/
 
     steps:
       - name: test
         run: |
           ls
+          pwd
