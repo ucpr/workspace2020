@@ -11,10 +11,9 @@ jobs:
 
     steps:
       - name: take a pic
-        uses: zenika/alpine-chrome
-        run: |
-          docker container run -it --rm -v $(pwd):/usr/src/app zenika/alpine-chrome --no-sandbox --screenshot --hide-scrollbars https://www.chromestatus.com/
-          ls
+        uses: docker://zenika/alpine-chrome
+        with:
+          args: -v $(pwd):/usr/src/app zenika/alpine-chrome --no-sandbox --screenshot --hide-scrollbars https://www.chromestatus.com/
 
       - name: test
         run: |
