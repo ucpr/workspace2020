@@ -28,6 +28,7 @@ jobs:
         run: |
           ls
           pwd
+          echo 1
 
       - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
         with:
