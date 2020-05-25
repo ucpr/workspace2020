@@ -16,14 +16,7 @@ jobs:
       - name: tale a pic
         run: |
           google-chrome-stable --headless --disable-gpu --no-sandbox --screenshot https://www.chromestatus.com/
-#      - name: take a pic
-#        uses: docker://zenika/alpine-chrome
-#        with:
-#          entrypoint: chromium-browser --headless --disable-gpu --disable-software-rasterizer --disable-dev-shm-usage
-#          args: -v $(pwd):/usr/src/app --no-sandbox --print-to-pdf=hoge.pdf --hide-scrollbars https://www.chromestatus.com/
-#      - name: take a pic
-#        run: |
-#          docker container run -it --rm -v $(pwd):/usr/src/app zenika/alpine-chrome --no-sandbox --screenshot --hide-scrollbars https://www.chromestatus.com/
+
       - name: test
         run: |
           ls
