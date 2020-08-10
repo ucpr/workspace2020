@@ -1,40 +1,39 @@
-name: docker_volume_test
+#name: docker_volume_test
 
-on: push
+#on: push
 #  issues:
 #    types: [opened]
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+#jobs:
+#  build:
+#    runs-on: ubuntu-latest
 
 #    container: cypress/browsers:node12.13.0-chrome78-ff70
-    container: actions-hub/gcloud@master
-    env:
-      PROJECT_ID: emerald-skill-240014
-      APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-      CLI: gsutil
- 
-    steps:
-      - uses: actions/checkout@v2
+#    container: actions-hub/gcloud@master
+#    env:
+#      PROJECT_ID: emerald-skill-240014
+#      APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+#      CLI: gsutil
+
+#    steps:
+#      - uses: actions/checkout@v2
 
 #      - name: tale a pic
 #        run: |
 #          google-chrome-stable --headless --disable-gpu --no-sandbox --screenshot https://www.chromestatus.com/
 #
-      - name: test
-        run: |
-          ls
-          pwd
-          echo 1
+#      - name: test
+#        run: |
+#          ls
+#          pwd
+#          echo 1
 
 #       with:
 #          args: -D version -l
 #          args: cp ./screenshot.png gs://gcs-test-ucpr
 
 #      - run: gcloud info
-      - run: /google-cloud-sdk/bin/gsutil version
-      
+#      - run: /google-cloud-sdk/bin/gsutil version
 #      - uses: actions/github-script@v1
 #        with:
 #          github-token: ${{secrets.GITHUB_TOKEN}}
@@ -44,5 +43,5 @@ jobs:
 #              owner: "ucpr",
 #              repo: "workspace2020",
 #              body: "👋 Thanks for reporting!\n ![test image](./screenshot.png)"
-#            }) 
-#  
+#            })
+#
